@@ -1,0 +1,426 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Her definerer vi variabler, som vi kan genbruge i hele CSS-filen.
+Det gør det super nemt at ændre f.eks. farver eller skrifttyper. */
+:root {
+  --green: #93c24c;
+  --blue: #009fe3;
+  --grey: #b0b0b0;
+  --max-width: 1200px;
+  --font-stack: "Public Sans", system-ui, Arial, Helvetica, sans-serif;
+  --transition: 0.3s ease;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+/* hele sidens indhold*/
+body {
+  font-family: var(--font-stack);
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+}
+
+/* Skriften */
+h1 {
+  font-size: clamp(32px, 5vw, 56px);
+  color: #000;
+  margin: 1.5rem 0 0.5rem;
+}
+
+h2 {
+  font-size: clamp(28px, 4vw, 48px);
+  color: #fff;
+  margin: 1.5rem 0 0.5rem;
+}
+
+h2#kampagne {
+  color: #000;
+  background-color: transparent;
+}
+
+h3 {
+  font-size: 18px;
+  color: #000;
+  margin: 1rem 0 0.5rem;
+  font-weight: 600;
+}
+
+h5 {
+  font-size: 20px;
+  color: #000;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+p {
+  font-size: clamp(16px, 2vw, 20px);
+  color: #fff;
+}
+
+.landing-content p {
+  color: #000;
+}
+
+/* Lists */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* Laver en custom markør før hvert li-element */
+li {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  position: relative; /* Gør det muligt at placere markøren præcist */
+  font-size: clamp(16px, 2vw, 18px);
+}
+
+li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--green);
+  font-weight: 700;
+  font-size: 1.5em;
+}
+
+/* Header */
+header {
+  background: #fff;
+  padding: 1rem 0;
+  box-shadow: var(--shadow);
+  /* Gør headeren altid bliver synlig øverst ved scroll */
+  position: sticky;
+  top: 0;
+  z-index: 100; /* Sørger for, at headeren ligger ovenpå alt andet indhold */
+}
+
+.logo {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.logo img {
+  max-width: 250px;
+  height: auto;
+  display: block;
+  transition: var(--transition);
+}
+
+.logo a:focus img,
+.logo a:hover img {
+  opacity: 0.8;
+}
+
+/* Sections */
+section {
+  margin-bottom: 0;
+  background-color: #fff;
+}
+
+article {
+  margin-bottom: 2rem;
+  background-color: var(--blue);
+}
+
+/* Video Landing Section */
+.landing-background {
+  position: relative;
+  min-height: 70vh; /* Minimumshøjde: 70% af skærmens højde (viewport height) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--blue);
+  overflow: hidden; /* Sikrer, at videoen ikke "stikker ud" */
+}
+
+.landing-background video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  opacity: 0.3;
+}
+
+.landing-content {
+  position: relative;
+  z-index: 10;
+  max-width: 800px;
+  margin: 0 2rem;
+  padding: 3rem;
+  text-align: center;
+  background: rgba(var(--blue), 0.65); /* 0.65 hvor gennemsigtig den er */
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+/* Stylingen af knappen inde i landing-content */
+.landing-content a {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.875rem 2rem;
+  background: var(--green);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: var(--transition);
+  box-shadow: var(--shadow);
+}
+
+.landing-content a:hover,
+.landing-content a:focus {
+  background: var(--green);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+/* Kernefakta Box */
+.clearfix {
+  max-width: 1200px;
+  margin: -3rem auto 0; /* Negativ margin: Trækker boksen op over sektionen ovenover*/
+  padding: 0 2rem;
+  position: relative;
+  z-index: 20;
+}
+
+.clearfix article {
+  background: var(--green);
+  padding: 3rem;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.clearfix article h2 {
+  color: #fff;
+  margin-top: 0;
+}
+
+.clearfix article ul {
+  margin-top: 2rem;
+}
+
+.clearfix article li {
+  font-size: 1.125rem;
+  color: #fff;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  transition: var(--transition);
+}
+
+.clearfix article li:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.clearfix article li::before {
+  color: #fff;
+}
+
+/* Kampagne Section */
+.kampagne {
+  padding: 4rem 2rem;
+  background: #fff;
+}
+
+.kampagne h2 {
+  color: #000;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.kampagne h5 {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+}
+
+.kampagne-videos {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  /* Laver et gitter, auto-fit sikrer at der er plads til så mange 300px kolonner, som muligt */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem; /* Afstand mellem grid items */
+}
+
+.video-item {
+  background: #f5f5f5;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.video-item:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-4px); /* Løfter boksen 4px op */
+}
+
+.video-item h3 {
+  padding: 1rem;
+  background: var(--blue);
+  color: #fff;
+  margin: 0;
+  font-size: 16px;
+}
+
+.video-item video {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: #000;
+}
+
+/* Fun Facts */
+.fun-facts {
+  background: var(--green);
+  padding: 4rem 2rem;
+  margin-bottom: 0;
+  color: #fff;
+}
+
+.fun-facts article {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: transparent; /* Ingen baggrund, bruger sektionens */
+}
+
+.fun-facts h2 {
+  margin-top: 0;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.fun-facts ul {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.fun-facts li {
+  color: #fff;
+  font-size: 1.125rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+  transition: var(--transition);
+}
+
+.fun-facts li:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Klima Section */
+.klima {
+  background: var(--blue);
+  padding: 4rem 2rem;
+}
+
+.klima article {
+  max-width: 900px;
+  margin: 0 auto;
+  background: transparent;
+}
+
+.klima h2 {
+  color: #fff;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Første H2 skal ikke have top-margin. first child */
+.klima h2:first-child {
+  margin-top: 0;
+}
+
+.klima p {
+  color: #fff;
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+}
+
+.klima strong {
+  font-weight: 700;
+}
+
+/* Footer */
+.kontakt {
+  background: var(--grey);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.kontakt address {
+  font-style: normal;
+  color: #333;
+  line-height: 1.8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .landing-background {
+    min-height: 60vh;
+  }
+
+  .landing-content {
+    padding: 2rem;
+    margin: 0 1rem;
+  }
+
+  .clearfix {
+    margin-top: -2rem;
+    padding: 0 1rem;
+  }
+
+  .clearfix article {
+    padding: 2rem;
+  }
+
+  .kampagne,
+  .fun-facts,
+  .klima {
+    padding: 3rem 1rem;
+  }
+
+  .kampagne-videos {
+    /* Skifter gitteret til kun én kolonne, når skærmen er lille */
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .landing-content {
+    padding: 1.5rem;
+  }
+
+  .landing-content a {
+    padding: 0.75rem 1.5rem;
+    font-size: 16px;
+  }
+
+  .clearfix article {
+    padding: 1.5rem;
+  }
+
+  .clearfix article li {
+    padding: 0.75rem;
+    font-size: 1rem;
+  }
+}
